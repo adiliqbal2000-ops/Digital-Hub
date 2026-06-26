@@ -16,6 +16,16 @@ nav a { color: #f0a500; text-decoration: none; font-size: 0.9em; }
 .hero h2 { font-size: 1.8em; color: #f0a500; }
 .hero p { margin: 15px auto; max-width: 500px; color: #ccc; }
 .btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: #f0a500; color: #000; border-radius: 25px; font-weight: bold; text-decoration: none; }
+
+/* COUNTDOWN */
+.countdown { background: #1a1a2e; padding: 25px 20px; text-align: center; border-bottom: 2px solid #f0a500; }
+.countdown h3 { color: #f0a500; margin-bottom: 15px; font-size: 1.1em; }
+.timer { display: flex; justify-content: center; gap: 15px; }
+.timer-box { background: #0f3460; border-radius: 10px; padding: 12px 18px; min-width: 70px; }
+.timer-box span:first-child { display: block; font-size: 2em; font-weight: bold; color: #f0a500; }
+.timer-box span:last-child { font-size: 0.75em; color: #aaa; }
+
+/* EBOOKS */
 .section-title { text-align: center; padding: 40px 20px 20px; color: #f0a500; font-size: 1.5em; }
 .cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 10px 20px 40px; }
 .card { background: #1e1e2e; border-radius: 12px; overflow: hidden; width: 280px; border: 1px solid #f0a500; text-align: center; }
@@ -24,35 +34,96 @@ nav a { color: #f0a500; text-decoration: none; font-size: 0.9em; }
 .card h3 { color: #f0a500; margin-bottom: 10px; }
 .card p { color: #aaa; font-size: 0.9em; margin-bottom: 15px; }
 .card a { display: inline-block; padding: 10px 25px; background: #25d366; color: #fff; border-radius: 20px; font-weight: bold; text-decoration: none; font-size: 0.9em; }
+
+/* TESTIMONIALS */
+.testimonials { background: #111827; padding: 40px 20px; }
+.testimonials h2 { text-align: center; color: #f0a500; margin-bottom: 25px; font-size: 1.5em; }
+.testi-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.testi-card { background: #1e1e2e; border-radius: 12px; padding: 20px; width: 280px; border-left: 4px solid #f0a500; }
+.testi-card p { color: #ccc; font-size: 0.9em; line-height: 1.6; margin-bottom: 12px; }
+.testi-card .name { color: #f0a500; font-weight: bold; font-size: 0.9em; }
+.stars { color: #f0a500; margin-bottom: 8px; }
+
+/* FAQ */
+.faq { padding: 40px 20px; max-width: 650px; margin: 0 auto; }
+.faq h2 { text-align: center; color: #f0a500; margin-bottom: 25px; font-size: 1.5em; }
+.faq-item { background: #1e1e2e; border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+.faq-q { padding: 15px 20px; cursor: pointer; color: #fff; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+.faq-q span { color: #f0a500; font-size: 1.2em; }
+.faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s; color: #aaa; font-size: 0.9em; line-height: 1.6; }
+.faq-a.open { max-height: 200px; padding: 0 20px 15px; }
+
+/* CONTACT */
+.contact { background: #111827; padding: 40px 20px; text-align: center; }
+.contact h2 { color: #f0a500; margin-bottom 20px; font-size: 1.5em; }
+.contact-form { max-width: 500px; margin: 20px auto 0; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 12px 15px; margin-bottom: 12px; background: #1e1e2e; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 0.95em; }
+.contact-form textarea { height: 120px; resize: none; }
+.contact-form button { width: 100%; padding: 12px; background: #f0a500; color: #000; border: none; border-radius: 25px; font-weight: bold; font-size: 1em; cursor: pointer; }
+
+/* SOCIAL */
+.social { padding: 30px 20px; text-align: center; }
+.social h2 { color: #f0a500; margin-bottom: 20px; font-size: 1.2em; }
+.social-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+.social-links a { display: inline-block; padding: 10px 20px; border-radius: 25px; font-weight: bold; text-decoration: none; font-size: 0.9em; }
+.fb { background: #1877f2; color: #fff; }
+.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+.tt { background: #010101; color: #fff; border: 1px solid #333; }
+.yt { background: #ff0000; color: #fff; }
+
+/* ABOUT */
 .about { padding: 40px 20px; max-width: 600px; margin: 0 auto; text-align: center; }
 .about .avatar { font-size: 4em; margin-bottom: 15px; }
 .about h2 { color: #f0a500; margin-bottom: 15px; }
 .about p { color: #aaa; line-height: 1.7; }
+
+/* WHATSAPP FLOAT */
 .whatsapp-float { position: fixed; bottom: 25px; right: 20px; background: #25d366; color: #fff; border-radius: 50px; padding: 12px 20px; font-weight: bold; text-decoration: none; font-size: 1em; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 999; }
+
+/* WHATSAPP POPUP */
+.wa-popup { position: fixed; bottom: 80px; right: 20px; background: #fff; color: #000; border-radius: 12px; padding: 15px 18px; width: 230px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 998; display: none; }
+.wa-popup p { font-size: 0.9em; margin-bottom: 10px; }
+.wa-popup a { display: block; text-align: center; background: #25d366; color: #fff; padding: 8px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9em; }
+.wa-popup .close-popup { position: absolute; top: 8px; right: 10px; cursor: pointer; color: #999; font-size: 1.1em; }
+
 footer { text-align: center; padding: 20px; background: #1a1a2e; color: #666; }
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <h1>⬡ Digital-Hub</h1>
   <p>Digital Creator | Ebook Author | AI & Crypto Guides</p>
   <nav>
     <a href="#ebooks">Ebooks</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
     <a href="#about">About</a>
-    <a href="https://wa.me/923361237139">Contact</a>
   </nav>
 </header>
 
+<!-- COUNTDOWN -->
+<div class="countdown">
+  <h3>🔥 Limited Time Offer — Grab Your Guide Before It Ends!</h3>
+  <div class="timer">
+    <div class="timer-box"><span id="hours">00</span><span>Hours</span></div>
+    <div class="timer-box"><span id="mins">00</span><span>Mins</span></div>
+    <div class="timer-box"><span id="secs">00</span><span>Secs</span></div>
+  </div>
+</div>
+
+<!-- HERO -->
 <div class="hero">
   <h2>Practical Guides for the Digital Age</h2>
   <p>Explore ebooks and manuals on Binance, Facebook Monetization, and digital skills to grow your knowledge.</p>
   <a href="#ebooks" class="btn">Explore Guides</a>
 </div>
 
+<!-- EBOOKS -->
 <h2 class="section-title" id="ebooks">📚 Our Eguides & Manuals</h2>
 <div class="cards">
-
   <div class="card">
     <img src="Binance_Guide_Catalog_1080x1080.jpg" alt="Binance Guide">
     <div class="card-body">
@@ -61,24 +132,100 @@ footer { text-align: center; padding: 20px; background: #1a1a2e; color: #666; }
       <a href="https://wa.me/923361237139?text=Hi! I want to buy the Binance Guide">💬 Order on WhatsApp</a>
     </div>
   </div>
-
   <div class="card">
     <img src="file_00000000966871f795ae266381803861.png" alt="Facebook Monetization Manual">
     <div class="card-body">
       <h3>Facebook Monetization Manual</h3>
-      <p>A step-by-step guide to earning on Facebook — understand tools, grow your audience & earn consistently.</p>
+      <p>A step-by-step guide to earning on Facebook — grow your audience & earn consistently.</p>
       <a href="https://wa.me/923361237139?text=Hi! I want to buy the Facebook Monetization Manual">💬 Order on WhatsApp</a>
     </div>
   </div>
-
 </div>
 
+<!-- TESTIMONIALS -->
+<div class="testimonials" id="testimonials">
+  <h2>⭐ What Our Customers Say</h2>
+  <div class="testi-cards">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"The Binance guide is amazing! I went from zero knowledge to making my first trade in just 3 days. Very practical and easy to understand."</p>
+      <div class="name">— Ahmed R., Lahore</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Facebook Monetization Manual helped me finally understand how to earn from my page. I made my first $50 within a week of reading it!"</p>
+      <div class="name">— Sara M., Karachi</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Excellent quality guides. Very detailed, no fluff. Adil explains everything step by step. Highly recommended for beginners!"</p>
+      <div class="name">— Usman K., Islamabad</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq" id="faq">
+  <h2>❓ Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How will I receive the ebook? <span>+</span></div>
+    <div class="faq-a">After payment, the ebook will be sent directly to you via WhatsApp in PDF format within minutes.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What payment methods are accepted? <span>+</span></div>
+    <div class="faq-a">We accept EasyPaisa, JazzCash, bank transfer, and USDT crypto payment. Contact us on WhatsApp to confirm.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Are the guides in Urdu or English? <span>+</span></div>
+    <div class="faq-a">The guides are written in simple English that is easy to understand for everyone, including beginners.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Can I get a refund? <span>+</span></div>
+    <div class="faq-a">Due to the digital nature of the product, we do not offer refunds. However, we ensure full satisfaction — contact us if you have any issues.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Is this suitable for complete beginners? <span>+</span></div>
+    <div class="faq-a">Yes! Our guides are designed specifically for beginners with no prior knowledge required.</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <h2 style="color:#f0a500;margin-bottom:20px;font-size:1.5em">📩 Contact Us</h2>
+  <div class="contact-form">
+    <input type="text" placeholder="Your Name">
+    <input type="text" placeholder="Your WhatsApp Number">
+    <textarea placeholder="Your message..."></textarea>
+    <button onclick="sendContact()">Send via WhatsApp</button>
+  </div>
+</div>
+
+<!-- SOCIAL -->
+<div class="social">
+  <h2>🌐 Follow Us</h2>
+  <div class="social-links">
+    <a href="#" class="fb">📘 Facebook</a>
+    <a href="#" class="ig">📸 Instagram</a>
+    <a href="#" class="tt">🎵 TikTok</a>
+    <a href="#" class="yt">▶️ YouTube</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
 <div class="about" id="about">
   <div class="avatar">👨‍💻</div>
   <h2>About Me</h2>
   <p>Hi! I'm Adil Iqbal, a digital creator and ebook author passionate about making complex topics simple. I create practical guides on Binance, AI tools, and digital skills to help people grow in the digital world.</p>
 </div>
 
+<!-- WHATSAPP POPUP -->
+<div class="wa-popup" id="waPopup">
+  <span class="close-popup" onclick="closePopup()">✕</span>
+  <p>👋 Need help choosing a guide? Chat with us!</p>
+  <a href="https://wa.me/923361237139?text=Hi! I need help choosing a guide">💬 Chat on WhatsApp</a>
+</div>
+
+<!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/923361237139?text=Hello! I found you on Digital-Hub" class="whatsapp-float">
   💬 WhatsApp Me
 </a>
@@ -87,5 +234,60 @@ footer { text-align: center; padding: 20px; background: #1a1a2e; color: #666; }
   <p>© 2026 Digital-Hub by Adil Iqbal | All rights reserved</p>
 </footer>
 
+<script>
+// COUNTDOWN TIMER - 24 hours
+function startTimer() {
+  let saved = localStorage.getItem('timerEnd');
+  if (!saved) {
+    let end = new Date().getTime() + 24 * 60 * 60 * 1000;
+    localStorage.setItem('timerEnd', end);
+    saved = end;
+  }
+  setInterval(() => {
+    let now = new Date().getTime();
+    let diff = saved - now;
+    if (diff < 0) {
+      let end = new Date().getTime() + 24 * 60 * 60 * 1000;
+      localStorage.setItem('timerEnd', end);
+      saved = end;
+      diff = 24 * 60 * 60 * 1000;
+    }
+    let h = Math.floor(diff / (1000 * 60 * 60));
+    let m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    let s = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('hours').innerText = String(h).padStart(2,'0');
+    document.getElementById('mins').innerText = String(m).padStart(2,'0');
+    document.getElementById('secs').innerText = String(s).padStart(2,'0');
+  }, 1000);
+}
+startTimer();
+
+// FAQ TOGGLE
+function toggleFaq(el) {
+  let ans = el.nextElementSibling;
+  let span = el.querySelector('span');
+  ans.classList.toggle('open');
+  span.innerText = ans.classList.contains('open') ? '−' : '+';
+}
+
+// WHATSAPP POPUP after 5 seconds
+setTimeout(() => {
+  document.getElementById('waPopup').style.display = 'block';
+}, 5000);
+
+function closePopup() {
+  document.getElementById('waPopup').style.display = 'none';
+}
+
+// CONTACT FORM
+function sendContact() {
+  let name = document.querySelector('.contact-form input:nth-child(1)').value;
+  let number = document.querySelector('.contact-form input:nth-child(2)').value;
+  let msg = document.querySelector('.contact-form textarea').value;
+  if (!name || !msg) { alert('Please fill in your name and message!'); return; }
+  let text = `Name: ${name}%0ANumber: ${number}%0AMessage: ${msg}`;
+  window.open(`https://wa.me/923361237139?text=${text}`);
+}
+</script>
 </body>
 </html>
