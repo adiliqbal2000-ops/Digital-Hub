@@ -340,5 +340,409 @@ animateCounter('c1', 500, 2000);
 animateCounter('c2', 750, 2000);
 animateCounter('c3', 15, 2000);
 </script>
+<!--
+  ============================================================
+  Digital-Hub AI Chat Widget
+  By Adil Iqbal — SAK Coaching
+  
+  HOW TO ADD TO YOUR WEBSITE:
+  Copy everything between START PASTE and END PASTE
+  and paste it just before the </body> tag in your index.html
+  ============================================================
+-->
+
+<!-- ==================== START PASTE ==================== -->
+<style>
+  #dh-chat-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    z-index: 9998;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border: none;
+    border-radius: 50%;
+    width: 62px;
+    height: 62px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: dh-pulse 2.5s infinite;
+  }
+  #dh-chat-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.6);
+    animation: none;
+  }
+  #dh-chat-label {
+    position: fixed;
+    bottom: 96px;
+    right: 24px;
+    z-index: 9997;
+    background: #075E54;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+  #dh-chat-label::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 22px;
+    border-width: 6px 6px 0;
+    border-style: solid;
+    border-color: #075E54 transparent transparent;
+  }
+  #dh-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 9999;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 16px;
+  }
+  #dh-overlay.open { display: flex; }
+  #dh-box {
+    background: #fff;
+    border-radius: 20px;
+    width: 370px;
+    max-width: 100%;
+    height: 580px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    animation: dh-slide-up 0.3s ease;
+  }
+  #dh-header {
+    background: #075E54;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  #dh-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  #dh-header-info { flex: 1; }
+  #dh-header-name { color: #fff; font-weight: 700; font-size: 15px; font-family: 'Segoe UI', sans-serif; }
+  #dh-header-status { color: #b2dfdb; font-size: 12px; font-family: 'Segoe UI', sans-serif; }
+  #dh-close {
+    background: none; border: none; color: #b2dfdb;
+    font-size: 22px; cursor: pointer; padding: 0 4px;
+    line-height: 1; transition: color 0.2s;
+  }
+  #dh-close:hover { color: #fff; }
+  #dh-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px 10px;
+    background: #e5ddd5;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  #dh-messages::-webkit-scrollbar { width: 3px; }
+  #dh-messages::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+  .dh-msg {
+    display: flex;
+    animation: dh-fade-in 0.2s ease;
+  }
+  .dh-msg.user { justify-content: flex-end; }
+  .dh-msg.bot  { justify-content: flex-start; }
+  .dh-bubble {
+    max-width: 82%;
+    padding: 9px 13px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #111;
+    word-break: break-word;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .dh-msg.user .dh-bubble {
+    background: #dcf8c6;
+    border-radius: 18px 18px 4px 18px;
+  }
+  .dh-msg.bot .dh-bubble {
+    background: #fff;
+    border-radius: 18px 18px 18px 4px;
+  }
+  #dh-typing {
+    display: none;
+    justify-content: flex-start;
+    animation: dh-fade-in 0.2s ease;
+  }
+  #dh-typing.show { display: flex; }
+  #dh-typing-bubble {
+    background: #fff;
+    border-radius: 18px 18px 18px 4px;
+    padding: 10px 14px;
+    display: flex; gap: 4px; align-items: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .dh-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #25D366;
+    animation: dh-bounce 1.2s infinite;
+  }
+  .dh-dot:nth-child(2) { animation-delay: 0.2s; }
+  .dh-dot:nth-child(3) { animation-delay: 0.4s; }
+  #dh-input-area {
+    background: #f0f0f0;
+    padding: 10px 12px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    flex-shrink: 0;
+    border-top: 1px solid #ddd;
+  }
+  #dh-input-wrap {
+    flex: 1;
+    background: #fff;
+    border-radius: 22px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+  #dh-input {
+    flex: 1; border: none; outline: none;
+    font-size: 14px; font-family: 'Segoe UI', sans-serif;
+    background: transparent; color: #111;
+    resize: none; max-height: 80px; overflow-y: auto;
+    line-height: 1.4;
+  }
+  #dh-send {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #25D366; border: none; cursor: pointer;
+    font-size: 18px; display: flex; align-items: center;
+    justify-content: center; transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  #dh-send:disabled { background: #b2dfdb; cursor: not-allowed; }
+  #dh-footer {
+    background: #075E54; padding: 5px 12px;
+    text-align: center; font-size: 11px;
+    color: #80cbc4; font-family: 'Segoe UI', sans-serif;
+  }
+  @keyframes dh-pulse {
+    0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45); }
+    50% { box-shadow: 0 4px 32px rgba(37,211,102,0.75); }
+  }
+  @keyframes dh-slide-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes dh-fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes dh-bounce {
+    0%,60%,100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); }
+  }
+  @media (max-width: 420px) {
+    #dh-box { width: 100%; height: 100vh; max-height: 100vh; border-radius: 0; }
+    #dh-overlay { padding: 0; align-items: stretch; }
+    #dh-chat-label { right: 16px; }
+    #dh-chat-btn { right: 16px; }
+  }
+</style>
+
+<!-- Floating button -->
+<div id="dh-chat-label">🤖 Chat with AI Assistant</div>
+<button id="dh-chat-btn" onclick="dhOpenChat()" title="Chat with AI Assistant">🤖</button>
+
+<!-- Chat overlay -->
+<div id="dh-overlay" onclick="dhCloseOnBg(event)">
+  <div id="dh-box">
+    <div id="dh-header">
+      <div id="dh-avatar">🤖</div>
+      <div id="dh-header-info">
+        <div id="dh-header-name">Digital-Hub Assistant</div>
+        <div id="dh-header-status">SAK Coaching • Online</div>
+      </div>
+      <button id="dh-close" onclick="dhCloseChat()">✕</button>
+    </div>
+
+    <div id="dh-messages">
+      <div class="dh-msg bot">
+        <div class="dh-bubble">👋 Assalam u Alaikum! Welcome to Digital-Hub 🎉<br><br>
+        I'm your AI assistant — here to help you choose the perfect guide to start earning online! 💰<br><br>
+        📘 <strong>Binance Guide</strong> — Crypto trading & passive income<br>
+        📘 <strong>Facebook Monetization Manual</strong> — Earn from your FB page<br>
+        🔥 <strong>Complete Bundle</strong> — Both guides at best price!<br><br>
+        Which one interests you? 😊</div>
+      </div>
+      <div id="dh-typing" class="dh-msg">
+        <div id="dh-typing-bubble">
+          <div class="dh-dot"></div>
+          <div class="dh-dot"></div>
+          <div class="dh-dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="dh-input-area">
+      <div id="dh-input-wrap">
+        <textarea id="dh-input" placeholder="Type a message..." rows="1"
+          oninput="dhAutoResize(this)"
+          onkeydown="dhHandleKey(event)"></textarea>
+      </div>
+      <button id="dh-send" onclick="dhSend()" disabled>➤</button>
+    </div>
+    <div id="dh-footer">Digital-Hub by SAK Coaching • Adil Iqbal 🇵🇰</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const SYSTEM = `You are Adil's AI Sales Assistant for Digital-Hub by SAK Coaching — a WhatsApp-based digital products store run by Adil Iqbal in Pakistan.
+
+YOUR ROLE: Help customers discover, choose, and purchase digital guides. Be warm, helpful, trustworthy, and motivating — NOT pushy or salesy. Build trust first, then close the sale naturally. Respond in English or Urdu depending on what the customer uses. Keep responses concise and WhatsApp-style (short paragraphs, use emojis naturally).
+
+PRODUCTS:
+1. 📘 Binance Beginning to Mastering Guide — crypto trading, investing & passive income. Rs. 250 (was Rs. 500).
+2. 📘 Facebook Monetization Manual — grow FB page & earn consistently. Rs. 250 (was Rs. 500).
+3. 🔥 Complete Bundle (Both Guides) — Rs. 400 (was Rs. 1000). BEST VALUE — always highlight this.
+
+PAYMENT: SadaPay only. Number: 03322343614. Name: Adil Iqbal. After payment, customer sends screenshot → PDF delivered via WhatsApp instantly.
+
+SELLER: Adil Iqbal — SAK Coaching. Website: https://adiliqbal2000-ops.github.io/Digital-Hub/ LinkedIn: https://www.linkedin.com/in/adil-iqbal-6a416141
+
+SALES PROCESS:
+1. Welcome warmly, find out interest
+2. Pitch relevant guide with benefits
+3. Handle objections (legitimacy, refunds, language, beginner-friendly)
+4. Upsell to Bundle when customer picks one guide
+5. Share SadaPay details ONLY when customer is ready to buy
+6. Confirm delivery after screenshot
+
+RULES: Never share payment details before purchase intent. Always try to upsell bundle. Respond in Urdu if customer writes Urdu. Never be rude. Keep replies short and conversational.`;
+
+  let chatHistory = [];
+  let labelHidden = false;
+
+  const input = document.getElementById('dh-input');
+  const sendBtn = document.getElementById('dh-send');
+  const messages = document.getElementById('dh-messages');
+  const typing = document.getElementById('dh-typing');
+  const label = document.getElementById('dh-chat-label');
+  const headerStatus = document.getElementById('dh-header-status');
+
+  input.addEventListener('input', function() {
+    sendBtn.disabled = !this.value.trim();
+  });
+
+  // Hide label after 4 seconds
+  setTimeout(() => {
+    label.style.opacity = '0';
+    labelHidden = true;
+  }, 4000);
+
+  window.dhOpenChat = function() {
+    document.getElementById('dh-overlay').classList.add('open');
+    label.style.display = 'none';
+    setTimeout(() => input.focus(), 300);
+  };
+
+  window.dhCloseChat = function() {
+    document.getElementById('dh-overlay').classList.remove('open');
+  };
+
+  window.dhCloseOnBg = function(e) {
+    if (e.target === document.getElementById('dh-overlay')) dhCloseChat();
+  };
+
+  window.dhAutoResize = function(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 80) + 'px';
+    sendBtn.disabled = !el.value.trim();
+  };
+
+  window.dhHandleKey = function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      dhSend();
+    }
+  };
+
+  function addMsg(role, text) {
+    // Remove typing indicator temporarily
+    const typingEl = document.getElementById('dh-typing');
+
+    const div = document.createElement('div');
+    div.className = 'dh-msg ' + (role === 'user' ? 'user' : 'bot');
+    const bubble = document.createElement('div');
+    bubble.className = 'dh-bubble';
+    bubble.innerHTML = text.replace(/\*(.*?)\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    div.appendChild(bubble);
+    messages.insertBefore(div, typingEl);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function showTyping(show) {
+    typing.classList.toggle('show', show);
+    headerStatus.textContent = show ? 'typing...' : 'SAK Coaching • Online';
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  window.dhSend = async function() {
+    const text = input.value.trim();
+    if (!text || sendBtn.disabled) return;
+
+    addMsg('user', text);
+    chatHistory.push({ role: 'user', content: text });
+    input.value = '';
+    input.style.height = 'auto';
+    sendBtn.disabled = true;
+    showTyping(true);
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-6',
+          max_tokens: 1000,
+          system: SYSTEM,
+          messages: chatHistory
+        })
+      });
+      const data = await res.json();
+      const reply = (data.content || []).map(b => b.text || '').join('') || 'Sorry, please try again!';
+      chatHistory.push({ role: 'assistant', content: reply });
+      showTyping(false);
+      addMsg('bot', reply);
+    } catch(err) {
+      showTyping(false);
+      addMsg('bot', '⚠️ Connection error. Please try again or contact us on WhatsApp!');
+    }
+
+    input.focus();
+  };
+})();
+</script>
+<!-- ===================== END PASTE ===================== -->
 </body>
 </html>
