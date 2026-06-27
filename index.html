@@ -80,17 +80,8 @@ nav a { color: #f0a500; text-decoration: none; font-size: 0.9em; }
 @keyframes spin { to { transform: rotate(360deg); } }
 #scrollTop { position: fixed; bottom: 90px; left: 20px; background: #f0a500; color: #000; border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 1.2em; cursor: pointer; display: none; z-index: 997; box-shadow: 0 4px 10px rgba(240,165,0,0.4); }
 .theme-toggle { position: fixed; top: 70px; right: 15px; background: #f0a500; color: #000; border: none; border-radius: 20px; padding: 6px 14px; cursor: pointer; font-weight: bold; font-size: 0.85em; z-index: 996; }
-body.light { background: #f5f5f5; color: #111; }
-body.light header { background: linear-gradient(135deg, #fff8e1, #fff3cd); }
-body.light .hero { background: linear-gradient(135deg, #fff3cd, #ffe082); }
-body.light .card { background: #fff; border-color: #f0a500; }
-body.light .testi-card { background: #fff; }
-body.light .faq-item { background: #fff; }
-body.light .faq-q { color: #111; }
-body.light footer { background: #fff3cd; color: #555; }
-body.light .testimonials { background: #fff8e1; }
-body.light .contact { background: #fff8e1; }
-body.light .contact-form input, body.light .contact-form textarea { background: #fff; color: #111; border-color: #ddd; }
+
+
 #cookiePopup { position: fixed; bottom: 0; left: 0; right: 0; background: #1e1e2e; padding: 15px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; z-index: 9998; border-top: 2px solid #f0a500; }
 #cookiePopup p { color: #aaa; font-size: 0.85em; flex: 1; }
 #cookiePopup button { background: #f0a500; color: #000; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; }
@@ -121,8 +112,7 @@ footer { text-align: center; padding: 20px; background: #1a1a2e; color: #666; }
   <h2>⬡ Digital-Hub</h2>
 </div>
 
-<!-- THEME TOGGLE -->
-<button class="theme-toggle" onclick="toggleTheme()">☀️ Light</button>
+
 
 <!-- COOKIE POPUP -->
 <div id="cookiePopup">
@@ -336,10 +326,7 @@ function sendContact() {
 window.addEventListener('scroll', () => {
   document.getElementById('scrollTop').style.display = window.scrollY > 300 ? 'block' : 'none';
 });
-function toggleTheme() {
-  document.body.classList.toggle('light');
-  document.querySelector('.theme-toggle').innerText = document.body.classList.contains('light') ? '🌙 Dark' : '☀️ Light';
-}
+
 function acceptCookie() { document.getElementById('cookiePopup').style.display = 'none'; localStorage.setItem('cookieAccepted','yes'); }
 if (localStorage.getItem('cookieAccepted')) { document.getElementById('cookiePopup').style.display = 'none'; }
 function animateCounter(id, target, duration) {
