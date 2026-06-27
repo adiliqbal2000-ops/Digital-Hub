@@ -1,4 +1,4 @@
-ok<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
@@ -97,6 +97,57 @@ nav a { color: #f0a500; text-decoration: none; font-size: 0.9em; }
 .wa-popup a { display: block; text-align: center; background: #25d366; color: #fff; padding: 8px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9em; }
 .wa-popup .close-popup { position: absolute; top: 8px; right: 10px; cursor: pointer; color: #999; font-size: 1.1em; }
 
+footer { text-align: center; padding: 20px; background: #1a1a2e; color: #666; }
+</style>
+/* PAGE LOADER */
+#loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0d1117; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#loader h2 { color: #f0a500; font-size: 1.5em; margin-top: 15px; }
+.spinner { width: 50px; height: 50px; border: 5px solid #1e1e2e; border-top: 5px solid #f0a500; border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* SCROLL TO TOP */
+#scrollTop { position: fixed; bottom: 90px; left: 20px; background: #f0a500; color: #000; border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 1.2em; cursor: pointer; display: none; z-index: 997; box-shadow: 0 4px 10px rgba(240,165,0,0.4); }
+
+/* DARK/LIGHT TOGGLE */
+.theme-toggle { position: fixed; top: 15px; right: 15px; background: #f0a500; color: #000; border: none; border-radius: 20px; padding: 6px 14px; cursor: pointer; font-weight: bold; font-size: 0.85em; z-index: 996; }
+body.light { background: #f5f5f5; color: #111; }
+body.light header { background: linear-gradient(135deg, #fff8e1, #fff3cd); }
+body.light .hero { background: linear-gradient(135deg, #fff3cd, #ffe082); }
+body.light .card { background: #fff; border-color: #f0a500; }
+body.light .testi-card { background: #fff; }
+body.light .faq-item { background: #fff; }
+body.light .faq-q { color: #111; }
+body.light footer { background: #fff3cd; color: #555; }
+body.light .testimonials { background: #fff8e1; }
+body.light .contact { background: #fff8e1; }
+body.light .contact-form input, body.light .contact-form textarea { background: #fff; color: #111; border-color: #ddd; }
+
+/* COOKIE POPUP */
+#cookiePopup { position: fixed; bottom: 0; left: 0; right: 0; background: #1e1e2e; padding: 15px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; z-index: 9998; border-top: 2px solid #f0a500; }
+#cookiePopup p { color: #aaa; font-size: 0.85em; flex: 1; }
+#cookiePopup button { background: #f0a500; color: #000; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+
+/* SHARE BUTTONS */
+.share { padding: 30px 20px; text-align: center; background: #111827; }
+.share h2 { color: #f0a500; margin-bottom: 15px; font-size: 1.2em; }
+.share-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.share-links a { padding: 10px 18px; border-radius: 20px; font-weight: bold; text-decoration: none; font-size: 0.85em; color: #fff; }
+.share-wa { background: #25d366; }
+.share-fb { background: #1877f2; }
+.share-tw { background: #1da1f2; }
+
+/* VISITOR COUNTER */
+.counter { background: #0f3460; padding: 25px 20px; text-align: center; }
+.counter h3 { color: #f0a500; margin-bottom: 15px; }
+.counter-boxes { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.counter-box { background: #1e1e2e; border-radius: 10px; padding: 15px 25px; border: 1px solid #f0a500; }
+.counter-box span:first-child { display: block; font-size: 2em; font-weight: bold; color: #f0a500; }
+.counter-box span:last-child { color: #aaa; font-size: 0.8em; }
+
+/* URDU SECTION */
+.urdu { background: #1a1a2e; padding: 30px 20px; text-align: right; direction: rtl; }
+.urdu h2 { color: #f0a500; font-size: 1.4em; margin-bottom: 15px; font-family: 'Arial', sans-serif; }
+.urdu p { color: #ccc; line-height: 2; font-size: 1em; } 
 footer { text-align: center; padding: 20px; background: #1a1a2e; color: #666; }
 </style>
 </head>
